@@ -20,8 +20,6 @@ class TeachersController < ApplicationController
     end
   end
 
-
-
   private
 
   def teach_params
