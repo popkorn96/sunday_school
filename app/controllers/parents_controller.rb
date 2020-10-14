@@ -1,7 +1,15 @@
 class ParentsController < ApplicationController
 
+  def show
+    @parent = Parent.find(params[:id])
+  end
+
   def new
     @parent = Parent.new
+  end
+
+  def edit
+    @parent = Parent.find(params[:id])
   end
 
   def create
@@ -13,9 +21,7 @@ class ParentsController < ApplicationController
     end
   end
 
-  def edit
-    @parent = Parent.find(params[:id])
-  end
+  
 
   def update
     @parent = Parent.find(params[:id])
@@ -29,4 +35,5 @@ class ParentsController < ApplicationController
   private
   def parent_params
     params.require(:parent).permit(:first_name, :last_name, :phone_number, :emergency_name, :emergency_number, :email, :password)
+  end
 end
