@@ -9,6 +9,7 @@ class TeachersController < ApplicationController
   end
 
   def edit
+    @teacher = Teacher.find(params[:id])
   end
   
   def create 
@@ -17,6 +18,15 @@ class TeachersController < ApplicationController
       redirect_to @teacher
     else 
       render:new
+    end
+  end
+
+  def update
+    @teacher = Teacher.find(params[:id])
+    if @teacher.update(teach_params)
+      redirect_to @teacher
+    else
+      render :edit
     end
   end
 
