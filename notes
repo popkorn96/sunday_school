@@ -1,0 +1,5 @@
+Add these methods somwehere multiple models can use them:
+
+def to_s
+    self.first_name + " " + self.last_name
+end

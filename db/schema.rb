@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_225721) do
+ActiveRecord::Schema.define(version: 2020_10_14_175827) do
 
   create_table "assignments", force: :cascade do |t|
     t.string "title"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2020_10_13_225721) do
   end
 
   create_table "children", force: :cascade do |t|
-    t.string "name"
     t.integer "age"
     t.string "favorite_color"
     t.integer "classroom_id"
@@ -32,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_10_13_225721) do
     t.integer "assignment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
   end
 
   create_table "children_assignments", id: false, force: :cascade do |t|
@@ -50,7 +51,6 @@ ActiveRecord::Schema.define(version: 2020_10_13_225721) do
   end
 
   create_table "parents", force: :cascade do |t|
-    t.string "name"
     t.integer "phone_number"
     t.string "email"
     t.string "emergency_name"
@@ -58,10 +58,11 @@ ActiveRecord::Schema.define(version: 2020_10_13_225721) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
   end
 
   create_table "teachers", force: :cascade do |t|
-    t.string "name"
     t.integer "phone_number"
     t.string "email"
     t.integer "dl"
@@ -69,6 +70,8 @@ ActiveRecord::Schema.define(version: 2020_10_13_225721) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
   end
 
 end
