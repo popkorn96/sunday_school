@@ -11,9 +11,9 @@ Specs:
   ~~ Teacher has_many Children thorugh Classroom & Classroom has_many Assignments through Children
 - [x] Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
   ~~ Rails offers two different ways to declare a many-to-many relationship between models. I offer the relationship between Assignments and Children which display the simpler form of declaring a many-to-many relationship using the has_many_and_belongs_to association, join table labeled children_assignments
-- [ ] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
-  ~~ **Assignment is being considered for this role
-- [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+- [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
+  ~~ **Path is being deliberated but the attributes are available for submission 
+- [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
   ~~ Completed with the EmailValidator as a helper for signups
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
   ~~ Class level scope query method in Child Model
