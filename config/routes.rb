@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'application#home'
 
   get '/auth/facebook/callback' => 'sessions#create'
-  
+
   resources :assignments, only: [:show, :index, :edit, :new]
   # get 'assignments/new'
   # get 'assignments/edit'
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   # get 'classrooms/index'
   # get 'classrooms/new'
   # get 'classrooms/edit'
-  resources :teachers, only: [:show, :index, :edit, :new]
+  resources :teachers, only: [:show, :edit, :new]
   # get 'teachers/show', to: 'teachers#show'
   # get 'teachers/index'
   # get 'teachers/edit'
