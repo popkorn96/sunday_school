@@ -9,5 +9,9 @@ class Parent < ApplicationRecord
     validates :emergency_number, length: { in: 6..20 }
     validates :password, length: { in: 6..20 }
     validates_with EmailValidator
+
+    def to_s
+        self.first_name + " " + self.last_name
+    end
 end
     

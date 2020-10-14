@@ -10,5 +10,22 @@ class TeachersController < ApplicationController
 
   def edit
   end
+  
+  def create 
+    @teacher = Teacher.new(teach_params)
+    if @teacher.save
+      redirect_to @teacher
+    else 
+      render:new
+    end
+  end
+
+
+
+  private
+
+  def teach_params
+    params.require(:teacher).permit(:first_name, :last_name, :phone_number, :dl, :volunteer, :email, :password)
+  end
 
 end

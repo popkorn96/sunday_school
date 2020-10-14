@@ -12,4 +12,8 @@ class Teacher < ApplicationRecord
     validates :volunteer, inclusion: [true, false]
     validates_with EmailValidator
     validates :password, length: { in: 6..20 }
+
+    def to_s
+        self.first_name + " " + self.last_name
+    end
 end
