@@ -7,7 +7,7 @@ Specs:
   ~~ Teacher has_many Assignments
 - [x] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
   ~~ Assignment belongs_to Teacher
-- [ x Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
+- [x] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
   ~~ Teacher has_many Children thorugh Classroom & Classroom has_many Assignments through Children
 - [x] Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
   ~~ Rails offers two different ways to declare a many-to-many relationship between models. I offer the relationship between Assignments and Children which display the simpler form of declaring a many-to-many relationship using the has_many_and_belongs_to association, join table labeled children_assignments
