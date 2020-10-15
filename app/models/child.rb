@@ -1,7 +1,7 @@
 class Child < ApplicationRecord
     belongs_to :classroom
     belongs_to :parent
-    has_many_and_belongs_to_many :assignments
+    has_and_belongs_to_many :assignments
     
     validates :first_name, :presence => true
     validates :last_name, :presence => true
@@ -10,10 +10,10 @@ class Child < ApplicationRecord
 
     scope :search, -> (query) { where("LOWER(name) LIKE ?", "%#{query.downcase}%").order(:name) }
 
-    def to_s
-        self.first_name + " " + self.last_name
-    end
-    def last_updated
-        updated_at.strftime("Last updated %A, %b %e, at %l:%M %p")
-    end
+    # def to_s
+    #     self.first_name + " " + self.last_name
+    # end
+    # def last_updated
+    #     updated_at.strftime("Last updated %A, %b %e, at %l:%M %p")
+    # end
 end
