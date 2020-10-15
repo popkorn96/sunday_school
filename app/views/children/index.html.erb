@@ -1,6 +1,6 @@
 <h2> Student List: </h2>
 <ul>
 <% @children.each do |c| %>
-    <div><%= link_to c.name child_path(c) %></div><br>
+    <div><%= link_to c.first_name, child_path(c) %></div><br>
 <% end %>
 </ul>

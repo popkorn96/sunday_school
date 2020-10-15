@@ -19,7 +19,7 @@ class ChildrenController < ApplicationController
   def create
     @child = Child.new(child_params)
     if @child.save
-      redirect_to @teacher
+      redirect_to @child
     else
       render:new
     end

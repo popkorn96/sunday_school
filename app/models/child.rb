@@ -1,6 +1,6 @@
 class Child < ApplicationRecord
     belongs_to :classroom
-    belongs_to :parent
+    belongs_to :parent, :optional => true
     has_and_belongs_to_many :assignments
     
     validates :first_name, :presence => true

@@ -17,7 +17,7 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-    @assignment = Assignment.new
+    @assignment = Assignment.new(assign_params)
     if @assignment.save
       redirect_to @assignment
     else 
@@ -37,7 +37,7 @@ class AssignmentsController < ApplicationController
   private
 
   def assign_params
-    params.require(:assignment).permit(:title, :description, :due_date, :teacher_id, :child_id)
+    params.require(:assignment).permit(:title, :description, :due_date, :parent_id, :child_id)
   end
 
 end

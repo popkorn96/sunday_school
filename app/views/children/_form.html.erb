@@ -22,12 +22,7 @@
     <%= f.label :favorite_color %><br>
     <%= f.text_field :favorite_color%><br><br>
     <%= f.label :parent_id %><br>
-    <%= f.text_field :parent_name, list: "parents_autocomplete" %>
-      <datalist id="parents_autocomplete">
-        <% Parent.all.each do |parent| %>
-          <option value="<%= parent.to_s %>">
-        <% end %>
-      </datalist><br><br><br>
+    <%= f.text_field :parent_id %><br><br>
     <%= f.collection_select :classroom_id, Classroom.all.order('title ASC'), :id, :title, { prompt: 'Select a Classroom' }, { id: 'classroom_select' } %><br><br>
     <%= f.submit class: "btn btn-primary" %><br><br>
 <% end %> 
