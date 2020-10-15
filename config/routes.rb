@@ -5,24 +5,24 @@ Rails.application.routes.draw do
 
   get '/auth/facebook/callback' => 'sessions#create'
 
-  resources :assignments, :only => [:show, :index, :edit, :new]
+  resources :assignments, :only => [:show, :index, :edit, :new, :create, :update]
   # get 'assignments/new'
   # get 'assignments/edit'
   # get 'assignments/index'
   # get 'assignments/show'
-  resources :parents, :only => [:show, :new, :edit, :create]
+  resources :parents, :only => [:show, :new, :edit, :create, :update]
   # get 'parents/new'
   # get 'parents/edit'
-  resources :children, :only => [:show, :index, :edit, :new, :create]
+  resources :children, :only => [:show, :index, :edit, :new, :create, :update]
   # get 'children/show'
   # get 'children/new'
   # get 'children/edit'
-  resources :classrooms, :only => [:show, :index, :edit, :new]
+  resources :classrooms, :only => [:show, :index, :edit, :new, :create, :update]
   # get 'classrooms/show'
   # get 'classrooms/index'
   # get 'classrooms/new'
   # get 'classrooms/edit'
-  resources :teachers, :only => [:show, :edit, :new, :create]
+  resources :teachers, :only => [:show, :edit, :new, :create, :update]
   # get 'teachers/show', to: 'teachers#show'
   # get 'teachers/index'
   # get 'teachers/edit'

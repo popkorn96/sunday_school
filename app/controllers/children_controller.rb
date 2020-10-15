@@ -27,7 +27,7 @@ class ChildrenController < ApplicationController
   
   def update
     @child = Child.find(params[:id])
-    if @child.update
+    if @child.update(child_params)
       redirect_to @child
     else
       render:edit
@@ -37,7 +37,7 @@ class ChildrenController < ApplicationController
   private
 
   def child_params
-    params.require(:child).permit(:first_name, :last_name, :age, :favorite_color)
+    params.require(:child).permit(:first_name, :last_name, :age, :favorite_color, :classroom_id, :parent_id)
   end
 
 end

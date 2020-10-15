@@ -1,0 +1,21 @@
+<%= form_for(@classroom) do |f| %>
+    <% if @classroom.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@classroom.errors.count, "error") %>
+        prohibited this assignment from being saved:
+      </h2>
+   
+      <ul>
+      <% @classroom.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul></div>
+    <% end %>
+
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br><br>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %><br><br>
+    <%= f.submit class: "btn btn-primary" %><br><br>
+<% end %> 

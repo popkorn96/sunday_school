@@ -21,11 +21,9 @@ class ParentsController < ApplicationController
     end
   end
 
-  
-
   def update
     @parent = Parent.find(params[:id])
-    if @parent.update
+    if @parent.update(parent_params)
       redirect_to @parent
     else
       render:new

@@ -1,6 +1,10 @@
 class Assignment < ApplicationRecord
     belongs_to :teacher
     has_and_belongs_to_many :children
+
+    validates :title, :presence => true
+    validates :description, :presence => true
+    validates :due_date, :presence => true
     
 
     def last_updated

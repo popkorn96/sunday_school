@@ -1,5 +1,5 @@
 <h2></h2>
 
-<% @children.each do |kid| %>
-    <div><%= link_to child.name child_path(child) %></div><br>
+<% @children.each do |c| %>
+    <div><%= link_to c.name child_path(c) %></div><br>
 <% end %>

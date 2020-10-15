@@ -27,7 +27,7 @@ class AssignmentsController < ApplicationController
 
   def update
     @assignment = Assignment.find(params[:id])
-    if @assignment.update
+    if @assignment.update(assign_params)
       redirect_to @assignment
     else 
       render:edit
