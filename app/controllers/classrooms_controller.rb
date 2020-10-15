@@ -5,7 +5,11 @@ class ClassroomsController < ApplicationController
   end
 
   def index
+    if params[:teacher_id]
+      @classroom = Teacher.find(params[:teacher_id]).classrooms 
+    else 
     @classrooms = Classroom.all
+    end
   end
 
   def new
