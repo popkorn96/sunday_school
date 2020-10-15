@@ -28,6 +28,8 @@ gem 'omniauth-facebook'
 
 gem 'dotenv-rails'
 
+gem 'byebug'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

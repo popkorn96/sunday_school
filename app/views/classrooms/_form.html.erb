@@ -17,5 +17,6 @@
     <%= f.text_field :title %><br><br>
     <%= f.label :description %><br>
     <%= f.text_field :description %><br><br>
+    <%= f.collection_select :teacher_id, Teacher.all.order('last_name ASC'), :id, :to_s, { prompt: 'Select a Teacher' }, { id: 'teachers_select' } %>
     <%= f.submit class: "btn btn-primary" %><br><br>
 <% end %> 
