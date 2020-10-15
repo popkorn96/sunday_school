@@ -1,7 +1,6 @@
 <h1>Classrooms</h1>
 <ul>
 <% @classrooms.each do |c|%>
-<h3><%= c.title %></h3>
-<h4><%= c.description %></h4>
+    <li><h3><%= link_to c.title, classroom_path(c)%></h3><p><%= c.description %></p></li>
 <% end %>
 </ul>
