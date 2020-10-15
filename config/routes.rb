@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :parents, :only => [:show, :new, :edit, :create]
   # get 'parents/new'
   # get 'parents/edit'
-  resources :children, :only => [:show, :index, :edit, :new]
+  resources :children, :only => [:show, :index, :edit, :new, :create]
   # get 'children/show'
   # get 'children/new'
   # get 'children/edit'
