@@ -5,7 +5,11 @@ class ChildrenController < ApplicationController
   end
 
   def index
+    if params[:classroom_id]
+      @children = Classroom.find(params[:classroom_id]).children
+    else
     @children = Child.all
+    end
   end
 
   def new

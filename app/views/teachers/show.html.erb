@@ -1,5 +1,12 @@
 <h1> <%= @teacher.to_s %>'s Profile </h1>
 <h3>Volunteer Status: <%= @teacher.volunteer %></h3><br>
 <h3>Class: <%= link_to @teacher.classroom.title, classroom_path(@teacher.classroom) %></h3>
+
+<%= link_to 'New Assignment', new_teacher_assignment_path(@teacher) %>
+ 
+<p>Assignments:</p>
+<% @teacher.assignments.each do |a| %>
+  <div><li><%= link_to a.title, assignment_path(a) %></li></div>
+<% end %>
 <p><i><%= @teacher.last_updated %></i></p>
 <p><%= link_to 'Edit Teacher', edit_teacher_path(@teacher) %></p>
