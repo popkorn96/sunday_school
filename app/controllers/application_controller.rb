@@ -4,4 +4,16 @@ class ApplicationController < ActionController::Base
             @user = User.find(session[:user_id])
         end
     end
+
+    private 
+
+    def teacher_name=(name)
+        self.teacher = Teacher.find_by(first_name: name)
+        return self.teacher.to_s
+    end
+
+    def teacher_name
+        self.teacher ? self.teacher.name : nil
+    end
+    
 end

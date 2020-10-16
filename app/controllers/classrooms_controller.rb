@@ -38,15 +38,6 @@ class ClassroomsController < ApplicationController
     end
   end
 
-  def teacher_name=(name)
-    self.teacher = Teacher.find_by(first_name: name)
-    return self.teacher.to_s
-  end
-
-  def teacher_name
-     self.teacher ? self.teacher.name : nil
-  end
-
   private
 
   def classrm_params
