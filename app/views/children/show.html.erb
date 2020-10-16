@@ -1,5 +1,8 @@
 <h1><%= @child.to_s %>'s Info Page</h1>
-<%= @child.to_s %>
-<%= @child.age %>
-<%= @child.favorite_color %><br>
+<h3>Full Name: <%= @child.to_s %></h3>
+<p><strong> Class: <%= link_to @child.classroom.title, classroom_path(@child.classroom) %></strong></p>
+<p><strong> Teacher: <%= link_to @child.classroom.teacher.to_s, teacher_path(@child.classroom.teacher) %></strong></p><br>
+<p>Age: <%= @child.age %></p>
+<p>Favorite Color: <%= @child.favorite_color %></p><br>
 <p><i><%= @child.last_updated %></i></p>
+<p><%= link_to 'Edit Student', edit_child_path(@child) %></p>

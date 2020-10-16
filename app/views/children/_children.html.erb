@@ -1,0 +1,3 @@
+<% classroom_children.each do |c| %>
+    <li><div><%= link_to c.first_name, child_path(c) %>, age <%= c.age%></div></li><br>
+<% end %>

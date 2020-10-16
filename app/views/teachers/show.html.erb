@@ -1,5 +1,5 @@
 <h1> <%= @teacher.to_s %>'s Profile </h1>
 <h3>Volunteer Status: <%= @teacher.volunteer %></h3><br>
-<h3></h3>
+<h3>Class: <%= link_to @teacher.classroom.title, classroom_path(@teacher.classroom) %></h3>
 <p><i><%= @teacher.last_updated %></i></p>
-
+<p><%= link_to 'Edit Teacher', edit_teacher_path(@teacher) %></p>

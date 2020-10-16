@@ -1,3 +1,8 @@
 <h1>Classroom Info:</h1>
-<h4>Teacher: <%= @classroom.teacher %></h4>
 <%= render 'classroom' %>
+<p><strong>Teacher: <%= link_to @classroom.teacher, teacher_path(@classroom.teacher)%></h4> - Email: <%=@classroom.teacher.email%></strong></p><br>
+<h3>Student Roster:</h3>
+<ol>
+<%= render partial: 'children/children', locals: {classroom_children: @classroom.children} %>
+</ol>
+<p><%= link_to 'Edit Classroom', edit_classroom_path(@classroom) %></p>

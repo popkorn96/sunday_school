@@ -19,6 +19,8 @@
     <%= f.text_field :description %><br><br>
     <%= f.label :due_date %><br><br>
     <%= f.datetime_local_field :due_date %><br><br>
+    <input type="file" multiple name="uploads" id="uploads">
+    <%= f.select(:child_ids, Child.all.collect {|c| [ c.to_s, c.id ] }, { :prompt => "Please select"}, { :multiple => true  }) %>
     <%= f.check_box :complete %>
     <%= f.label :complete, "Check box if assignment is complete." %><br><br>
     <%= f.submit class: "btn btn-primary" %><br><br>
