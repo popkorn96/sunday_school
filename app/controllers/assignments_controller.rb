@@ -54,7 +54,7 @@ class AssignmentsController < ApplicationController
   #   @assignment_child = @assignment.children.build
   # end
   def assign_params
-    params.require(:assignment).permit(:title, :description, :due_date, :teacher_id, :assignments_children_attributes => [:id, :child_id => []])
+    params.require(:assignment).permit(:title, :description, :due_date, :teacher_id, child_ids:[], children_attributes: [:first_name, :last_name])
   end
 
 end

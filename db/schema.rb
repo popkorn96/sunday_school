@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_16_020936) do
+ActiveRecord::Schema.define(version: 2020_10_16_195125) do
 
   create_table "assignments", force: :cascade do |t|
     t.string "title"
@@ -18,14 +18,13 @@ ActiveRecord::Schema.define(version: 2020_10_16_020936) do
     t.datetime "due_date"
     t.boolean "complete", default: false
     t.integer "teacher_id"
-    t.integer "child_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "assignments_children", id: false, force: :cascade do |t|
-    t.integer "child_id"
+  create_table "assignments_children", force: :cascade do |t|
     t.integer "assignment_id"
+    t.integer "child_id"
     t.index ["assignment_id"], name: "index_assignments_children_on_assignment_id"
     t.index ["child_id"], name: "index_assignments_children_on_child_id"
   end
@@ -35,7 +34,6 @@ ActiveRecord::Schema.define(version: 2020_10_16_020936) do
     t.string "favorite_color"
     t.integer "classroom_id"
     t.integer "parent_id"
-    t.integer "assignment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"

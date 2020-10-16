@@ -1,8 +1,10 @@
 class Child < ApplicationRecord
     belongs_to :classroom
-    belongs_to :parent, :optional => true
-    has_many :assignments_children 
-    has_many :assignments, :through => :assignments_children
+    belongs_to :parent
+    has_many :assignments_children, :class_name => 'AssignmentsChildren'
+    has_many :assignments, through: :assignments_children
+    accepts_nested_attributes_for :assignments_children
+    accepts_nested_attributes_for :assignments
     
     validates :first_name, :presence => true
     validates :last_name, :presence => true

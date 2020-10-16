@@ -4,9 +4,6 @@ class ApplicationController < ActionController::Base
             @user = User.find(session[:user_id])
         end
     end
-    def current_user
-        session[:email]
-    end
 
     private 
 
