@@ -10,7 +10,7 @@ class CreateChildren < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    create_table :children_assignments, id: false do |t|
+    create_table :assignments_children, id: false do |t|
       t.belongs_to :child
       t.belongs_to :assignment
     end

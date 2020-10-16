@@ -4,5 +4,9 @@
 <p><strong> Teacher: <%= link_to @child.classroom.teacher.to_s, teacher_path(@child.classroom.teacher) %></strong></p><br>
 <p>Age: <%= @child.age %></p>
 <p>Favorite Color: <%= @child.favorite_color %></p><br>
+<p>Upcoming Assignments: 
+<% @child.assignments.each do |a| %>
+    <li><div><%= link_to a.title, assignment_path(a) %>, due <%= a.due_date%></div></li><br>
+<% end %> %></p><br>
 <p><i><%= @child.last_updated %></i></p>
 <p><%= link_to 'Edit Student', edit_child_path(@child) %></p>
