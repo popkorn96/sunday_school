@@ -1,9 +1,14 @@
 <h1><%= @child.to_s %>'s Info Page</h1>
 <h3>Full Name: <%= @child.to_s %></h3>
+<h3><%= link_to 'Parent Info Link', parent_path(@child.parent)%></h3>
+<p>Age: <%= @child.age %></p>
+<p>Favorite Color: <%= @child.favorite_color %></p><br><br><br>
 <p><strong> Class: <%= link_to @child.classroom.title, classroom_path(@child.classroom) %></strong></p>
 <p><strong> Teacher: <%= link_to @child.classroom.teacher.to_s, teacher_path(@child.classroom.teacher) %></strong></p><br>
-<p>Age: <%= @child.age %></p>
-<p>Favorite Color: <%= @child.favorite_color %></p><br>
-<p>Upcoming Assignments: <p>
+
+<p>Upcoming Assignments: 
+<% @child.assignments_children.each do |a| %>
+    <div><li><%= link_to a.assignment.title, assignment_path(a) %>, due <%= a.assignment.due_date.utc.getlocal.strftime("%A, %b %e, at %I:%M  %p ")%></li></div><br>
+<% end %> </p><br>
 <p><i><%= @child.last_updated %></i></p>
 <p><%= link_to 'Edit Student', edit_child_path(@child) %></p>
