@@ -1,4 +1,16 @@
 class ApplicationController < ActionController::Base
+    def authentication_required
+        if !logged_in?
+            redirect_to login_path
+        end
+    end
+    def logged_in?
+        !!current_user
+    end
+    def current_teacher
+        @current_user ||= Teacher.find(session[:teacher_id]) if session[:teacher_id]
+    end
+    helper_method :current_user
     def home 
         if session[:user_id]
             @user = User.find(session[:user_id])
@@ -6,14 +18,5 @@ class ApplicationController < ActionController::Base
     end
 
     private 
-
-    def teacher_name=(name)
-        self.teacher = Teacher.find_by(first_name: name)
-        return self.teacher.to_s
-    end
-
-    def teacher_name
-        self.teacher ? self.teacher.name : nil
-    end
     
 end

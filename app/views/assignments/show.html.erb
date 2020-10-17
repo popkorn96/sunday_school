@@ -4,5 +4,5 @@
 <% @assignment.assignments_children.each do |a| %>
     <div><li><%= link_to a.child.to_s, child_path(a) %>, age <%= a.child.age%></li></div><br>
 <% end %> </p><br>
-<p><%= link_to 'Edit Assignment', edit_assignment_path(@assignment) %></p>
+<p><%= link_to 'Edit Assignment', edit_teacher_assignment_path(@assignment) %></p>
 <p><i><%= @assignment.last_updated %></i></p>

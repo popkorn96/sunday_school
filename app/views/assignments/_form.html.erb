@@ -1,4 +1,5 @@
 <%= form_for(@assignment) do |f| %>
+  <%= teacher_id_field(@assignment) %>
     <% if @assignment.errors.any? %>
     <div id="error_explanation">
       <h2>

@@ -1,4 +1,5 @@
 <h1>Assignments</h1>
 <% @assignments.each do |a| %>
     <li><%= link_to a.title, assignment_path(a) %></li>
-<% end %>
+<% end %><br><br>
+<i><%= link_to 'New Assignment', new_teacher_assignment_path(@assignments) %></i><br><br>

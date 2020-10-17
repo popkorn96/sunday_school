@@ -1,7 +1,7 @@
 class ChildrenController < ApplicationController
+  before_action :set_child, only: [:show, :edit, :update]
 
   def show
-    @child = Child.find(params[:id])
   end
 
   def index
@@ -13,11 +13,23 @@ class ChildrenController < ApplicationController
   end
 
   def new
-    @child = Child.new
+    if params[:classroom_id] && !Classroom.exists?(params[:classroom_id])
+      redirect_to classrooms_path, alert: "Classroom not found."
+    else
+      @child = Child.new(classroom_id: params[:classroom_id])
+    end
   end
 
   def edit
-    @child = Child.find(params[:id])
+    if params[:classroom_id]
+      classroom = Classroom.find_by(id: params[:classroom_id])
+      if classroom.nil?
+        redirect_to classrooms_path, alert: "Classroom not found."
+      else
+        @child = classroom.children.find_by(id: params[:id])
+        redirect_to classroom_children_path(classroom), alert: "Student not found." if @child.nil?
+      end
+    end
   end
 
   def create
@@ -30,7 +42,6 @@ class ChildrenController < ApplicationController
   end
   
   def update
-    @child = Child.find(params[:id])
     if @child.update(child_params)
       redirect_to @child
     else
@@ -57,6 +68,10 @@ class ChildrenController < ApplicationController
   end
 
   private
+
+  def set_child
+    @child = Child.find(params[:id])
+  end
 
   def child_params
     params.require(:child).permit(:first_name, :last_name, :age, :favorite_color, :classroom_id, :parent_id)

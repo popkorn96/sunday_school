@@ -1,17 +1,20 @@
 class TeachersController < ApplicationController
-  before_action :set_teacher, :only => [:assignment_index, :assignment]
+  before_action :set_teacher, :only => [:show, :edit, :update, :assignment_index, :assignment]
   before_action :require_login
 
   def show
-    @teacher = Teacher.find(params[:id])
   end
 
   def new
-    @teacher = Teacher.new
+    if params[:teacher_id] && !Teacher.exists?(params[:teacher_id])
+      redirect_to teachers_path, alert: "Teacher not found."
+    else
+      @teacher = Teacher.new(teacher_id: params[:teacher_id])
+    end
   end
 
+  
   def edit
-    @teacher = Teacher.find(params[:id])
   end
   
   def create 
@@ -24,7 +27,6 @@ class TeachersController < ApplicationController
   end
 
   def update
-    @teacher = Teacher.find(params[:id])
     if @teacher.update(teach_params)
       redirect_to @teacher
     else
@@ -44,6 +46,10 @@ class TeachersController < ApplicationController
   
   private
 
+  def set_teacher
+    @teacher = Teacher.find(params[:id])
+  end
+
   def require_login
     return head(:forbidden) unless session.include? :teacher_id
   end
@@ -52,8 +58,5 @@ class TeachersController < ApplicationController
     params.require(:teacher).permit(:first_name, :last_name, :phone_number, :dl, :volunteer, :email, :password)
   end
 
-  def set_teacher
-    @teacher = Teacher.find(params[:id])
-  end
 
 end

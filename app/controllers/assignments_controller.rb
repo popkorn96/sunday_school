@@ -1,7 +1,7 @@
 class AssignmentsController < ApplicationController
+  before_action :set_assignment, only: [:show, :edit, :update]
 
   def show
-    @assignment = Assignment.find(params[:id])
   end
 
   def index
@@ -13,21 +13,27 @@ class AssignmentsController < ApplicationController
   end
 
   def new
-    @assignment = Assignment.new
-    # get_children
+    if params[:teacher_id] && !Teacher.exists?(params[:teacher_id])
+      redirect_to teachers_path, alert: "Teacher not found."
+    else
+      @assignment = Assignment.new(teacher_id: params[:teacher_id])
+    end
   end
 
   def edit
-    @assignment = Assignment.find(params[:id])
-    # get_children
+    if params[:teacher_id]
+      teacher = Teacher.find_by(id: params[:teacher_id])
+      if teacher.nil?
+        redirect_to teachers_path, alert: "Teacher not found."
+      else 
+        @assignment = teacher.assignments.find_by(id: params[:id])
+        redirect_to teacher_assignments_path(teacher), alert: "Assignment not found." if @assignment.nil?
+      end
+    end
   end
 
   def create
     @assignment = Assignment.new(assign_params)
-    # params[:children][:id].each do |child|
-    #   if !child.empty?
-    #     @assignment.assignments_children.build(:child_id => child)
-    #   end
     if @assignment.save
       redirect_to @assignment
     else 
@@ -36,11 +42,6 @@ class AssignmentsController < ApplicationController
   end
 
   def update
-    @assignment = Assignment.find(params[:id])
-    # params[:children][:id].each do |child|
-    #   if !child.empty?
-    #     @assignment.assignments_children.build(:child_id => child)
-    #   end
     if @assignment.update(assign_params)
       redirect_to @assignment
     else 
@@ -49,10 +50,11 @@ class AssignmentsController < ApplicationController
   end
 
   private
-  # def get_children
-  #   @all_children = Child.all
-  #   @assignment_child = @assignment.children.build
-  # end
+
+  def set_assignment
+    @assignment = Assignment.find(params[:id])
+  end
+
   def assign_params
     params.require(:assignment).permit(:title, :description, :due_date, :teacher_id, child_ids:[], children_attributes: [:first_name, :last_name])
   end

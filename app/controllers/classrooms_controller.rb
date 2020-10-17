@@ -1,7 +1,8 @@
 class ClassroomsController < ApplicationController
+  before_action :set_classroom, :only => [:show, :edit, :update]
+
 
   def show
-    @classroom = Classroom.find(params[:id])
   end
 
   def index
@@ -17,7 +18,6 @@ class ClassroomsController < ApplicationController
   end
 
   def edit
-    @classroom = Classroom.find(params[:id])
   end
 
   def create 
@@ -30,7 +30,6 @@ class ClassroomsController < ApplicationController
   end
 
   def update
-    @classroom = Classroom.find(params[:id])
     if @classroom.update(classrm_params)
       redirect_to @classroom
     else 
@@ -38,7 +37,17 @@ class ClassroomsController < ApplicationController
     end
   end
 
+  def results
+    @children = Child.search(params[:])
+    render :index
+  end
+
+
   private
+
+  def set_classroom
+    @classroom = Classroom.find(params[:id])
+  end
 
   def classrm_params
     params.require(:classroom).permit(:title, :description, :teacher_id)

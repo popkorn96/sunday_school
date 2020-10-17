@@ -11,4 +11,4 @@
     <div><li><%= link_to a.assignment.title, assignment_path(a) %>, due <%= a.assignment.due_date.utc.getlocal.strftime("%A, %b %e, at %I:%M  %p ")%></li></div><br>
 <% end %> </p><br>
 <p><i><%= @child.last_updated %></i></p>
-<p><%= link_to 'Edit Student', edit_child_path(@child) %></p>
+<p><%= link_to 'Edit Student', edit_classroom_child_path(@child) %></p>
