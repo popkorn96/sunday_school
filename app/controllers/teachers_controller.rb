@@ -1,5 +1,6 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, :only => [:assignment_index, :assignment]
+  before_action :require_login
 
   def show
     @teacher = Teacher.find(params[:id])
@@ -42,6 +43,10 @@ class TeachersController < ApplicationController
   end
   
   private
+
+  def require_login
+    return head(:forbidden) unless session.include? :teacher_id
+  end
 
   def teach_params
     params.require(:teacher).permit(:first_name, :last_name, :phone_number, :dl, :volunteer, :email, :password)
