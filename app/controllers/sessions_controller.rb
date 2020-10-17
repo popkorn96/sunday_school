@@ -1,19 +1,17 @@
 class SessionsController < ApplicationController
+
+  def new
+    @teacher = Teacher.new
+  end
+
   def create
-    @user = User.find_or_create_by(uid: auth['uid']) do |u|
-    u.name = auth['info']['name']
-    u.email = auth['info']['email']
-    u.image = auth['info']['image']
-  end
-      render 'welcome/home'
-    end
-    
-    private
-    
-    def auth
-      request.env['omniauth.auth']
-    end
-    
+    user = Teacher.find_by(:email => params[:email])
+    if user && user.authenticate(params[:password])
+      session[:teacher_id] = user.id
+      redirect_to teacher_path(user)
+    else
+      render 'sessions/new'
     end
   end
+    
 end

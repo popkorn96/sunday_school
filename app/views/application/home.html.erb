@@ -5,6 +5,7 @@
   <h2>Facebook UID: <%= @user.uid %></h2>
   <img src="<%= @user.image %>">
 <% else %>
-  <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+  <%= link_to('Log in with Facebook!', '/auth/facebook') %><br>
+  <%= link_to 'Log in with Sunday School!', login_path(@teacher)%>
 
 <% end %>

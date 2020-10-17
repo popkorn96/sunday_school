@@ -12,7 +12,7 @@ class Teacher < ApplicationRecord
     validates :phone_number, length: { is: 10 }
     validates :dl, length: { is: 8 }
     validates :volunteer, inclusion: [true, false]
-    validates :email, presence: true, email: true
+    validates :email, presence: true, email: true, uniqueness: true
     validates :password, length: { in: 6..20 }
 
 end

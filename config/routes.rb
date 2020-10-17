@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'application#home'
   get '/login' => 'sessions#new'
-  get '/sessions' => 'sessions#create'
+  post '/sessions' => 'sessions#create'
   get '/auth/facebook/callback' => 'sessions#create'
 
   resources :assignments, :only => [:show, :index, :edit, :new, :create, :update]
