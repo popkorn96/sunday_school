@@ -1,5 +1,7 @@
 class ClassroomsController < ApplicationController
   before_action :set_classroom, :only => [:show, :edit, :update]
+  before_action :authentication_required
+  before_action :redirect_if_not_authorized, :only => [:new, :edit, :create, :update]
 
 
   def show
@@ -38,7 +40,7 @@ class ClassroomsController < ApplicationController
   end
 
   def results
-    @children = Child.search(params[:])
+    @children = Child.search(params[:query])
     render :index
   end
 
@@ -51,6 +53,12 @@ class ClassroomsController < ApplicationController
 
   def classrm_params
     params.require(:classroom).permit(:title, :description, :teacher_id)
+  end
+
+  def redirect_if_not_authorized
+    if current_teacher.id != @classroom.teacher_id
+        redirect_to classroom_path(@classroom)
+    end
   end
 
 end

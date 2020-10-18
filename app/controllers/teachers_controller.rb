@@ -1,18 +1,13 @@
 class TeachersController < ApplicationController
   before_action :set_teacher, :only => [:show, :edit, :update, :assignment_index, :assignment]
-  before_action :require_login
+  before_action :authentication_required, :only => [:show, :edit, :update]
 
   def show
   end
 
   def new
-    if params[:teacher_id] && !Teacher.exists?(params[:teacher_id])
-      redirect_to teachers_path, alert: "Teacher not found."
-    else
-      @teacher = Teacher.new(teacher_id: params[:teacher_id])
-    end
+    @teacher = Teacher.new
   end
-
   
   def edit
   end
@@ -57,6 +52,5 @@ class TeachersController < ApplicationController
   def teach_params
     params.require(:teacher).permit(:first_name, :last_name, :phone_number, :dl, :volunteer, :email, :password)
   end
-
 
 end

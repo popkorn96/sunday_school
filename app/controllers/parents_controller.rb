@@ -1,4 +1,6 @@
 class ParentsController < ApplicationController
+  before_action :authentication_required
+  
 
   def show
     @parent = Parent.find(params[:id])
@@ -33,5 +35,10 @@ class ParentsController < ApplicationController
   private
   def parent_params
     params.require(:parent).permit(:first_name, :last_name, :phone_number, :emergency_name, :emergency_number, :email, :password)
+  end
+  def redirect_if_not_authorized
+    if current_teacher.id != @parent.child.classroom.teacher.id
+        redirect_to parent_path(@parent)
+    end
   end
 end

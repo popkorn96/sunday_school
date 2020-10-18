@@ -1,6 +1,7 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update]
-
+  before_action :authentication_required
+  
   def show
   end
 

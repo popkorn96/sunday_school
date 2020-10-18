@@ -1,5 +1,7 @@
 class ChildrenController < ApplicationController
-  before_action :set_child, only: [:show, :edit, :update]
+  before_action :set_child, :only => [:show, :edit, :update]
+  before_action :authentication_required
+  before_action :redirect_if_not_authorized, :only => [:edit, :update]
 
   def show
   end
@@ -75,6 +77,12 @@ class ChildrenController < ApplicationController
 
   def child_params
     params.require(:child).permit(:first_name, :last_name, :age, :favorite_color, :classroom_id, :parent_id)
+  end
+
+  def redirect_if_not_authorized
+    if current_teacher.id != @child.classroom.teacher.id
+        redirect_to classroom_path(@child)
+    end
   end
 
 end
