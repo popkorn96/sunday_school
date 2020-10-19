@@ -1,11 +1,10 @@
-<h1>Home</h1>
-<% if session[:user_id] %>
+<h1>Welcome!</h1>
+<% if session[:teacher_id] %>
   <h1><%= @user.name %></h1>
   <h2>Email: <%= @user.email %></h2>
   <h2>Facebook UID: <%= @user.uid %></h2>
-  <img src="<%= @user.image %>">
 <% else %>
-  <%= link_to('Log in with Facebook!', '/auth/facebook') %><br>
-  <%= link_to 'Log in with Sunday School!', login_path(@teacher)%> 
-  <p>Don't have an account? <%= link_to "Sign Up", new_teacher_path %></p>
+  <h3>Log in with <%= link_to('Facebook!', '/auth/facebook') %><br><br></h2>
+  <h3>Log in with <%= link_to 'Sunday School!', login_path(@teacher)%><h2><br>
+  <h3>Don't have an account? <%= link_to "Sign Up", new_teacher_path %></h3></p><br>
 <% end %>

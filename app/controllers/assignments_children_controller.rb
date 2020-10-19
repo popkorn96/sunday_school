@@ -1,2 +1,3 @@
 class AssignmentsChildrenController < ApplicationController
+    
 end

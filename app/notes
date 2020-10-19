@@ -1,0 +1,32 @@
+before_action :set_assignchild, :only => [:edit, :update]
+
+    def edit
+        if params[:assignment_id]
+            assignment = Assignment.find_by(id: params[:assignment_id])
+            if assignment.nil?
+                redirect_to assignments_path, alert: "Assignment not found."
+            else
+              @assignchild = assignment.assignmentschildren.find_by(id: params[:id])
+                redirect_to assignment_path(assignment),alert: "Relationship not found." if @assignchild.nil?
+            end
+        end
+    end
+
+    def update
+      if @assignchild.update(assignchild_params)
+        redirect_to @assignment
+      else 
+        render:edit
+      end
+    end
+  
+    private
+  
+    def set_assignchild
+      assignment = Assignment.find_by(id: params[:assignment_id])
+      @assignchild = AssignmentsChildren.find_by(id: params[:id])
+    end
+  
+    def classrm_params
+      params.require(:assignmentchildren).permit(:assignment_id, :child_id)
+    end

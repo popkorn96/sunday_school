@@ -1,8 +1,6 @@
 class Parent < ApplicationRecord
     include ActiveModel::Validations
 
-    has_secure_password
-
     has_many :children
 
     validates :first_name, :presence => true

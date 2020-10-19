@@ -20,10 +20,10 @@
     <%= f.text_field :description %><br><br>
     <%= f.label :due_date %><br><br>
     <%= f.datetime_local_field :due_date %><br><br>
-    <%= f.collection_check_boxes :child_ids, Child.all, :id, :to_s%><br><br>
-
+    <%= f.collection_select :teacher_id, Teacher.all.order('last_name ASC'), :id, :to_s, { prompt: 'Select a Teacher' }, { id: 'teachers_select' } %><br><br><br>
+    <%= f.collection_check_boxes :child_ids, Child.all , :id, :to_s%><br><br>
     <%= f.check_box :complete %>
     <%= f.label :complete, "Check box if assignment is complete." %><br><br>
-    <%= f.collection_select :teacher_id, Teacher.all.order('last_name ASC'), :id, :to_s, { prompt: 'Select a Teacher' }, { id: 'teachers_select' } %><br><br><br>
+    
     <%= f.submit class: "btn btn-primary" %><br><br>
 <% end %> 

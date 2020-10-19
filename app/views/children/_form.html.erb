@@ -21,7 +21,6 @@
     <%= f.number_field :age %><br><br>
     <%= f.label :favorite_color %><br>
     <%= f.text_field :favorite_color%><br><br>
-    <%= f.collection_select(:parent_id, Parent.all.order('first_name + last_name ASC'), :id, "to_s", { prompt: 'Select a Parent' }, { id: 'parent_select' }) %><br><br>
     <%= f.collection_select :classroom_id, Classroom.all.order('title ASC'), :id, :title, { prompt: 'Select a Classroom' }, { id: 'classroom_select' } %><br><br>
     <%= f.submit class: "btn btn-primary" %><br><br>
 <% end %> 

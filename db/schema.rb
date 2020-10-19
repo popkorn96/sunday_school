@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_16_195125) do
+ActiveRecord::Schema.define(version: 2020_10_18_223133) do
 
   create_table "assignments", force: :cascade do |t|
     t.string "title"
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 2020_10_16_195125) do
     t.integer "emergency_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "password_digest"
     t.string "first_name"
     t.string "last_name"
   end

@@ -34,7 +34,7 @@ class ParentsController < ApplicationController
 
   private
   def parent_params
-    params.require(:parent).permit(:first_name, :last_name, :phone_number, :emergency_name, :emergency_number, :email, :password)
+    params.require(:parent).permit(:first_name, :last_name, :phone_number, :emergency_name, :emergency_number, :email)
   end
   def redirect_if_not_authorized
     if current_teacher.id != @parent.child.classroom.teacher.id

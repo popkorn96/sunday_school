@@ -1,7 +1,7 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update]
   before_action :authentication_required
-  
+
   def show
   end
 
@@ -25,7 +25,7 @@ class AssignmentsController < ApplicationController
     if params[:teacher_id]
       teacher = Teacher.find_by(id: params[:teacher_id])
       if teacher.nil?
-        redirect_to teachers_path, alert: "Teacher not found."
+        redirect_to teacher_path, alert: "Teacher not found."
       else 
         @assignment = teacher.assignments.find_by(id: params[:id])
         redirect_to teacher_assignments_path(teacher), alert: "Assignment not found." if @assignment.nil?

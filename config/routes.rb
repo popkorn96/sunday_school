@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :teachers, :only => [:show, :edit, :new, :create, :update]
   resources :teachers, :only => [:show] do 
-    resources :assignments, :only => [:show, :index, :new, :edit]
+    resources :assignments, :only => [:show, :index, :new, :edit, :update]
   end
 
   get '/assignments/search', to:'assignments#search'
