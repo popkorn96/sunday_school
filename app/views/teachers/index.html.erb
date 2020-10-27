@@ -1,0 +1,6 @@
+<h2> Teacher's Roster: </h2>
+<ul>
+<% @teachers.sort{|a,b| a.last_name <=> b.last_name}.each do |t| %>
+    <div><%= link_to t.to_s, teacher_path(t) %></div><br>
+<% end %>
+</ul><br>

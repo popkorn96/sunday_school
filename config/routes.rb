@@ -18,10 +18,11 @@ Rails.application.routes.draw do
     resources :children, :only => [:show, :index, :new, :edit]
   end
 
-  resources :teachers, :only => [:show, :edit, :new, :create, :update]
-  resources :teachers, :only => [:show] do 
+  resources :teachers, :only => [:show, :index, :edit, :new, :create, :update]
+  resources :teachers, :only => [:show, :index] do 
     resources :assignments, :only => [:show, :index, :new, :edit, :update]
   end
+
 
   get '/assignments/search', to:'assignments#search'
   post '/search', to:'assignments#results'

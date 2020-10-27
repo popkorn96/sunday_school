@@ -2,7 +2,7 @@
 <hr>
 <h3>Full Name: <%= @child.to_s %></h3>
 <% if @child.parent.nil? %>
-<p><i>This student does not currently have a Parent listed, please <%= link_to 'edit', edit_classroom_child_path(@child) %> to update.</i></p>
+<p><i>This student does not currently have a Parent listed, please <%= link_to 'edit', new_parent_path(@child) %> to update.</i></p>
 <% else %>
 <h3><%= link_to 'Parent Contact Info', parent_path(@child.parent)%></h3>
 <% end %><p>Age: <%= @child.age %></p>

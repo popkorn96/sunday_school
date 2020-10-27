@@ -33,6 +33,14 @@
 				width: 100%;
 				background: #FDFDFO;
 			}
+			#nav {
+				padding-bottom: 10010px;
+				margin-bottom: -10000px;
+				float: left;
+				width: 230px;
+				margin-left: -100%;
+				background: #EBFFE5;
+			}
 			
 			#footer {
 				clear: left;
@@ -47,8 +55,8 @@
 			}
 						
 			#content {
-				margin-left: 25px; /* Same as 'nav' width */
-				margin-right: 25px; /* Same as 'nav' width */
+				margin-left: 230px; /* Same as 'nav' width */
+				margin-right: 230px; /* Same as 'nav' width */
 			}
 			
 			.innertube {
@@ -58,6 +66,16 @@
 		
 			p {
 				color: #555;
+			}
+			nav ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			
+			nav ul a {
+				color: darkgreen;
+				text-decoration: none;
 			}
 		
 		</style>
@@ -78,15 +96,34 @@
 				<div id="content">
 					<div class="innertube">
 						<body>
-            <%= yield %>
-            </body>
+            			<%= yield %>
+            			</body>
 					</div>
 				</div>
-			</main></div>
+			</main>
+			<nav id="nav">
+				<div class="innertube">
+					<h3>OPTIONS:</h3>
+					<ul>
+						<li><%= link_to 'Home', teacher_path(@current_user) %></li><br>
+						<li><%= link_to 'Classroom', classroom_path(@current_user) %></li><br>
+						<li><%= link_to 'Assignments', teacher_assignments_path(@current_user) %></li><br>
+						<li><%= link_to 'All Teachers', teachers_path(@current_user) %></li><br>
+						<li><%= link_to 'Logout', logout_path(session)%></li><br>
+					</ul>
+				</div>
+			</nav>
+		
+		</div>
 		
 		<footer id="footer">
       <div class="innertube">
+	  <% if @current_user %>
+	  <i><p> Logged in as <%= @current_user.email %><p></i>
+		
+		<% else %>
 		<p><i>Sunday School WebApp</i></p>
+        <% end %>
 			</div>
 		</footer>
 	

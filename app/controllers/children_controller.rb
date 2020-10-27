@@ -1,4 +1,5 @@
 class ChildrenController < ApplicationController
+  layout "openapp"
   before_action :set_child, :only => [:show, :edit, :update]
   before_action :authentication_required
   before_action :redirect_if_not_authorized, :only => [:edit, :update]
@@ -80,8 +81,8 @@ class ChildrenController < ApplicationController
   end
 
   def redirect_if_not_authorized
-    if current_teacher.id != @child.classroom.teacher.id
-        redirect_to classroom_path(@child)
+    if current_user.id != @child.classroom.teacher.id
+        redirect_to child_path(@child)
     end
   end
 

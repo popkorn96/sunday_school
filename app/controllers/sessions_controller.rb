@@ -20,7 +20,6 @@ class SessionsController < ApplicationController
     end
   end
 
-
 	def destroy
 		session.delete(:teacher_id)
     @current_user = nil

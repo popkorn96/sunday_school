@@ -1,7 +1,8 @@
 class ClassroomsController < ApplicationController
+  layout "openapp"
   before_action :set_classroom, :only => [:show, :edit, :update]
   before_action :authentication_required
-  before_action :redirect_if_not_authorized, :only => [:new, :edit, :create, :update]
+  before_action :redirect_if_not_authorized, :only => [:edit, :update]
 
 
   def show
@@ -44,7 +45,6 @@ class ClassroomsController < ApplicationController
     render :index
   end
 
-
   private
 
   def set_classroom
@@ -56,7 +56,7 @@ class ClassroomsController < ApplicationController
   end
 
   def redirect_if_not_authorized
-    if current_teacher.id != @classroom.teacher_id
+    if current_user.id != @classroom.teacher_id
         redirect_to classroom_path(@classroom)
     end
   end

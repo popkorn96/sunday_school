@@ -1,4 +1,4 @@
-<h1> <%= @parent.to_s %>'s Profile </h1>
+<h1> Parent: <%= @parent.to_s %>'s Profile </h1>
 <hr>
 <h4>Contact Info: </h4>
 <p>Phone Number: <strong><%= number_to_phone(@parent.phone_number, area_code: true) %></strong></p>

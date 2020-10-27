@@ -1,6 +1,7 @@
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, only: [:show, :edit, :update]
-  before_action :authentication_required
+  layout "openapp"
+  before_action :set_assignment, :only => [:show, :edit, :update]
+  before_action :authentication_required, :only => [:show, :index, :edit, :update, :new, :create]
 
   def show
   end

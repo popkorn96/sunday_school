@@ -20,4 +20,9 @@ class Teacher < ApplicationRecord
             user.password = SecureRandom.hex
         end
     end
+    def list_all_teachers
+        Teacher.all.sort{|a,b| a.last_name <=> b.last_name}.each_with_index do |teacher,i|
+            "#{i+1}. #{teacher.name}"
+        end
+    end
 end

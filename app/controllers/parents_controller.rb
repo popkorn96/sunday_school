@@ -1,6 +1,7 @@
 class ParentsController < ApplicationController
+  layout "openapp"
+  before_action :redirect_if_not_authorized, :only => [:new, :create, :edit, :update]
   before_action :authentication_required
-  
 
   def show
     @parent = Parent.find(params[:id])
@@ -34,11 +35,12 @@ class ParentsController < ApplicationController
 
   private
   def parent_params
-    params.require(:parent).permit(:first_name, :last_name, :phone_number, :emergency_name, :emergency_number, :email)
+    params.require(:parent).permit(:first_name, :last_name, :phone_number, :emergency_name, :emergency_number, :email, child_ids:[], children_attributes: [:first_name, :last_name])
   end
   def redirect_if_not_authorized
-    if current_teacher.id != @parent.child.classroom.teacher.id
-        redirect_to parent_path(@parent)
+    @child = Child.find_by(params[:id])
+    if current_user.id != @child.classroom.teacher.id
+        redirect_to child_path(@child)
     end
   end
 end

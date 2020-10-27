@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_teacher, :logged_in?
+    
 
     def home
         if session[:teacher_id]
@@ -15,14 +15,13 @@ class ApplicationController < ActionController::Base
     end
 
     def logged_in?
-        !!current_teacher
+        !!current_user
     end
 
-    def current_teacher
+    def current_user
         @current_user ||= Teacher.find(session[:teacher_id]) if session[:teacher_id]
     end
-
-
+    helper_method :current_user, :logged_in?
 
     
     private 
