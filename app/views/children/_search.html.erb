@@ -1,5 +1,5 @@
-<%= form_with url:"/search", local: :true  do |form| %>
-    <%= form.label "Search for: "%>
+<%= form_with url:"/children/search", local: :true  do |form| %>
+    <%= form.label "Search by Last Name: "%>
     <%= form.text_field :query%>
     <%= form.submit "Search"%>
 <% end %>

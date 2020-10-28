@@ -2,9 +2,9 @@
 <h2> All Students: </h2>
 <i>Ordered by last name:</i>
 <ul>
-<% @children.sort{|a,b| a.last_name <=> b.last_name}.each do |c| %>
-    <li><div><%= link_to c.to_s, child_path(c) %></div><br>
+<% @children.each do |c| %>
+    <div><%= link_to c.to_s, child_path(c) %>, age: <%=c.age%> </div><br>
 <% end %>
-</ul></li><br><br>
+</ul><br><br>
 
-<i><%= link_to 'New Student', new_classroom_child_path(@children) %></i><br><br>
+<i><%= link_to 'New Student', new_classroom_child_path(@children) %></i><br><br> 

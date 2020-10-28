@@ -9,5 +9,6 @@
 <ol>
 <%= render partial: 'children/children', locals: {classroom_children: @classroom.children} %>
 </ol>
+<i><%= link_to 'New Student', new_classroom_child_path(@current_user) %></i><br><br> 
 <% end %>
 <p><%= link_to 'Edit Classroom', edit_classroom_path(@classroom) %></p>

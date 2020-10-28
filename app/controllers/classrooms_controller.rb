@@ -40,11 +40,6 @@ class ClassroomsController < ApplicationController
     end
   end
 
-  def results
-    @children = Child.search(params[:query])
-    render :index
-  end
-
   private
 
   def set_classroom

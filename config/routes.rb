@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
 
-  get '/assignments/search', to:'assignments#search'
-  post '/search', to:'assignments#results'
+  get '/children/search', to:'children#search'
+  post '/children/search', to:'children#results'
 
   end

@@ -11,5 +11,5 @@ class Child < ApplicationRecord
     validates :age, :numericality=> true, :inclusion => {:in => 6..18, :message => "should be between 6 and 18."}
     validates :favorite_color, :presence => true
 
-    scope :search, -> (query) { where("LOWER(name) LIKE ?", "%#{query.downcase}%").order(:name) }
+    scope :search, -> (query) { where("LOWER(last_name) LIKE ?", "%#{query.downcase}%").order(:last_name) }
 end

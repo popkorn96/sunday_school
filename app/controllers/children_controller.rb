@@ -71,7 +71,6 @@ class ChildrenController < ApplicationController
   end
 
   def search
-
   end
 
   def results
@@ -86,7 +85,7 @@ class ChildrenController < ApplicationController
   end
 
   def child_params
-    params.require(:child).permit(:first_name, :last_name, :age, :favorite_color, :classroom_id, :parent_id)
+    params.require(:child).permit(:first_name, :last_name, :age, :favorite_color, :classroom_id, :parent_id, :search)
   end
 
   def redirect_if_not_authorized
@@ -95,4 +94,4 @@ class ChildrenController < ApplicationController
     end
   end
 
-end
+end 
