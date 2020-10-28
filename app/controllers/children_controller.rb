@@ -70,6 +70,15 @@ class ChildrenController < ApplicationController
     self.classroom ? self.classroom.name : nil
   end
 
+  def search
+
+  end
+
+  def results
+    @children = Child.search(params[:query])
+    render :index
+  end
+
   private
 
   def set_child

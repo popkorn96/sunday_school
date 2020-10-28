@@ -109,6 +109,8 @@
 						<li><%= link_to 'Classroom', classroom_path(@current_user) %></li><br>
 						<li><%= link_to 'Assignments', teacher_assignments_path(@current_user) %></li><br>
 						<li><%= link_to 'All Teachers', teachers_path(@current_user) %></li><br>
+						<li><%= link_to 'All Classrooms', classrooms_path(@current_user) %></li><br>
+						<li><%= link_to 'All Students', children_path(@current_user) %></li><br>
 						<li><%= link_to 'Logout', logout_path(session)%></li><br>
 					</ul>
 				</div>
@@ -118,12 +120,8 @@
 		
 		<footer id="footer">
       <div class="innertube">
-	  <% if @current_user %>
 	  <i><p> Logged in as <%= @current_user.email %><p></i>
-		
-		<% else %>
 		<p><i>Sunday School WebApp</i></p>
-        <% end %>
 			</div>
 		</footer>
 	
