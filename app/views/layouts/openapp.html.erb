@@ -16,7 +16,7 @@
 			
 			#header {
 				background: #C9EAF3;
-				height: 130px;
+				height: 95px;
 				text-align: center;
 			}
 			
@@ -108,9 +108,9 @@
 						<li><%= link_to 'Home', teacher_path(@current_user) %></li><br>
 						<li><%= link_to 'Classroom', classroom_path(@current_user) %></li><br>
 						<li><%= link_to 'Assignments', teacher_assignments_path(@current_user) %></li><br>
-						<li><%= link_to 'All Teachers', teachers_path(@current_user) %></li><br>
-						<li><%= link_to 'All Classrooms', classrooms_path(@current_user) %></li><br>
-						<li><%= link_to 'All Students', children_path(@current_user) %></li><br>
+						<li><%= link_to '- All Teachers', teachers_path(@current_user) %></li><br>
+						<li><%= link_to '- All Classrooms', classrooms_path(@current_user) %></li><br>
+						<li><%= link_to '- All Students', children_path(@current_user) %></li><br>
 						<li><%= link_to 'Logout', logout_path(session)%></li><br>
 					</ul>
 				</div>
